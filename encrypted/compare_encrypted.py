@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 from pylab import *
-rcParams['figure.figsize'] = 30, 12
+rcParams['figure.figsize'] = 30, 16
 
 font = {'family' : 'normal',
         'weight' : 'bold',
@@ -29,9 +29,20 @@ performance = (
 1.26881889764,
 1.24770186335,
 0.954241380952,
-3.29617647059,
+3.41,
 0.809574539474,
 4.58362318841,
+)
+
+stddev = (
+.01,
+.01,
+.27,
+.18,
+.36,
+.33,
+.07,
+.18
 )
 
 y_pos = np.arange(len(tests))
@@ -39,14 +50,14 @@ error = np.random.rand(len(tests))
 
 plt.barh(y_pos, performance, color='#174990', xerr=0, align='center', alpha=1.)
 plt.yticks(y_pos, tests, weight='bold')
-plt.xlim(0, 8)
+plt.xlim(0, 6.5)
 plt.xlabel('Average Transfer Rate', weight='bold')
 
 
 for i in range(len(tests)):
-    
-    plt.text(performance[i]+.2, i, "%.2f Gbps" % performance[i], horizontalalignment="left",
+    plt.text(performance[i]+.6, i, "%.2f Gbps\n$\sigma=%.2f$ $Gbps$" % (performance[i], stddev[i]), horizontalalignment="center",
              verticalalignment='center', color="black", weight='bold')
+
 
 
 plt.title('Comparison of Average Encrypted \nTransfer Rates ', weight='bold')

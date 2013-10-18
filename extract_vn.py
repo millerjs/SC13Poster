@@ -44,5 +44,4 @@ with open(path, 'rb') as csvfile:
         rxs.append(rx)
         txs.append(tx)
 
-print path
-print mean(rxs)
+print  "%.2f\t%.2f" % (mean(rxs),std(rxs))

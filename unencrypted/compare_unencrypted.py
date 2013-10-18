@@ -26,17 +26,26 @@ performance = (
     5.41,
 )
 
+stddev = (
+.03,
+.28,
+.04,
+.75,
+.05,
+)
+
+
 y_pos = np.arange(len(tests))
 error = np.random.rand(len(tests))
 
 plt.barh(y_pos, performance, color='#174990', xerr=0, align='center', alpha=1.)
 plt.yticks(y_pos, tests, weight='bold')
-plt.xlim(0, 8)
+plt.xlim(0, 6.5)
 plt.xlabel('Average Transfer Rate', weight='bold')
 
 for i in range(len(tests)):
     
-    plt.text(performance[i]+.2, i, "%.2f Gbps" % performance[i], horizontalalignment="left",
+    plt.text(performance[i]+.5, i, "%.2f Gbps\n$\sigma=%.2f$ $Gbps$" % (performance[i], stddev[i]), horizontalalignment="center",
              verticalalignment='center', color="black", weight='bold')
 
 plt.title('Comparison of Average Unencrpyted \n Transfer Rates', weight='bold')
