@@ -15,11 +15,11 @@ matplotlib.rc('font', **font)
 tests = (
     "rsync",
     "scp",
-    "UDR[rsync] threaded & single-thread",
-    "UDR[scp] threaded & single-thread",
+    "UDR[rsync] threaded",
+    "UDR[scp] threaded",
     "UDTCAT (disk to disk)",
-    "UDTCAT threaded (disk to disk)",
     "UDTCAT (memory to memory)",
+    "UDTCAT threaded (disk to disk)",
     "UDTCAT threaded (memory to memory)",
     )
 
@@ -28,9 +28,9 @@ performance = (
 0.191090869565,
 1.26881889764,
 1.24770186335,
-0.954241380952,
+.95,
+.95,
 3.41,
-0.809574539474,
 4.58362318841,
 )
 
@@ -48,10 +48,16 @@ stddev = (
 y_pos = np.arange(len(tests))
 error = np.random.rand(len(tests))
 
+
 plt.barh(y_pos, performance, color='#174990', xerr=0, align='center', alpha=1.)
 plt.yticks(y_pos, tests, weight='bold')
 plt.xlim(0, 6.5)
 plt.xlabel('Average Transfer Rate', weight='bold')
+
+
+# yaxis.grid(color='gray', linestyle='dashed
+# plt.xaxis.grid(color='gray', linestyle='dashed')
+
 
 
 for i in range(len(tests)):

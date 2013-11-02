@@ -6,7 +6,17 @@ from scipy import *
 from scipy import optimize
 
 
-resolution=1
+resolution=5
+
+
+rcParams['figure.figsize'] = 30, 12
+
+font = {'family' : 'normal',
+        'weight' : 'bold',
+        'size'   : 42}
+
+matplotlib.rc('font', **font)
+
 
 
 def vntoi(x, label):
@@ -72,16 +82,16 @@ def plotter(path, label):
     tx_label = label
     
     if max(rxs) > .1:
-        plot(x, rxs, alpha=.7, linewidth=3, label=rx_label)
+        plot(x, rxs, alpha=.7, linewidth=10, label=rx_label)
     if max(txs) > .1:
-        plot(x, txs, alpha=.7, linewidth=3, label=tx_label)
+        plot(x, txs, alpha=.7, linewidth=10, label=tx_label)
 
 
 # Label PLot
 # for i in range(1,len(sys.argv)-1):
 files=[
-    ["udtcat_disk_enc32.dat", "UDTCAT disk to disk encrypted (32 threads)"], 
-    ["udtcat_memory_enc32.dat", "UDTCAT memory to memory encrypted (32 threads)"],
+    ["udtcat_disk_unencrypted_32.dat", "UDTCAT disk to disk unencrypted"], 
+    ["udtcat_disk_encrypted_32.dat", "UDTCAT disk to disk threaded encrypytion"],
   ]
 
 
@@ -94,8 +104,7 @@ for arg in files:
 title="Sample data transfer with selected parameters"
 ax.set_title(title)
 ylim(0,10)
-xlim(0, 40)
-
+xlim(0,100)
 # plt.tight_layout(pad=10)
 
 
@@ -118,6 +127,6 @@ title = insert
 plt.set_facecolor('white')
 plt.savefig("sample.png")
 # savefig(title+".png", box_extra_artists=(lgd,), bbox_inches='tight')
-show()
+# show()
         
         

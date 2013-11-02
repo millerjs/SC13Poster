@@ -9,6 +9,7 @@ from scipy import optimize
 resolution=5
 
 
+
 def vntoi(x, label):
     if "k" in label:
         return float(x)/1e6

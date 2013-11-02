@@ -16,14 +16,16 @@ tests = (
     "UDR[scp]",
     "UDTCAT disk to disk",
     "UDTCAT memory to memory"
+    # "UDTCAT RTT = 1ms memory to memory",
     )
 
 performance = (
     0.8222425,
-    1.13264705882,
-    1.22,
+    1.28,
+    1.25,
     4.894,
     5.41,
+    # 7.46,
 )
 
 stddev = (
@@ -32,6 +34,7 @@ stddev = (
 .04,
 .75,
 .05,
+# 1.07,
 )
 
 
@@ -41,6 +44,7 @@ error = np.random.rand(len(tests))
 plt.barh(y_pos, performance, color='#174990', xerr=0, align='center', alpha=1.)
 plt.yticks(y_pos, tests, weight='bold')
 plt.xlim(0, 6.5)
+# plt.xlim(0, 8.5)
 plt.xlabel('Average Transfer Rate', weight='bold')
 
 for i in range(len(tests)):
